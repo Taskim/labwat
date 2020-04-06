@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom'
 import Form from './components/Form'
 import DisplayUsers from './components/DisplayUsers'
 import './App.css'
+import Register from './Register'
 
 class App extends Component {
     state = {
@@ -35,11 +36,11 @@ class App extends Component {
         return (
             <div className="App">
                 <Switch>
-                    <Route path="/about">
-                        <div>about</div>
+                    <Route path="/register">
+                        <Register />
                     </Route>
-                    <Route path="/users">
-                        <div>users</div>
+                    <Route path="/login">
+                        <div>login </div>
                     </Route>
                     <Route path="/">
                         <div>home</div>

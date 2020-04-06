@@ -16,22 +16,18 @@ if (process.env.NODE_ENV !== 'production') {
 const app = express()
 const PORT = process.env.PORT || 8080
 
-var corsOptions = {
-    origin: 'http://localhost:8081',
-}
-
 mongoose
     .connect(process.env.MONGODB_URL, { useNewUrlParser: true })
     .then(() => {
         console.log('Successfully connect to MongoDB.')
         initial()
     })
-    .catch(err => {
+    .catch((err) => {
         console.error('Connection error', err)
         process.exit()
     })
 
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/', routes)
@@ -55,7 +51,7 @@ function initial() {
         if (!err && count === 0) {
             new Role({
                 name: 'user',
-            }).save(err => {
+            }).save((err) => {
                 if (err) {
                     console.log('error', err)
                 }
@@ -65,7 +61,7 @@ function initial() {
 
             new Role({
                 name: 'admin',
-            }).save(err => {
+            }).save((err) => {
                 if (err) {
                     console.log('error', err)
                 }
