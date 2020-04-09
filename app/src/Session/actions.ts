@@ -8,6 +8,9 @@ import {
     LoginRequestActionType,
     LoginSuccessActionType,
     LoginFailureActionType,
+    LogoutRequestActionType,
+    LogoutSuccessActionType,
+    LogoutFailureActionType,
 } from './types'
 
 export const registerRequest = (
@@ -32,7 +35,7 @@ export const loginRequest = (fields: LoginFields): LoginRequestActionType => ({
     fields,
 })
 
-export const loginSucess = (user: User): LoginSuccessActionType => ({
+export const loginSuccess = (user: User): LoginSuccessActionType => ({
     type: 'login/LOGIN_SUCCESS',
     user,
 })
@@ -42,6 +45,15 @@ export const loginFailure = (error: string): LoginFailureActionType => ({
     error,
 })
 
-export const logoutCurrentUser = () => ({
-    type: 'login/LOGOUT_CURRENT_USER',
+export const logoutRequest = (): LogoutRequestActionType => ({
+    type: 'login/LOGOUT_REQUEST',
+})
+
+export const logoutSuccess = (): LogoutSuccessActionType => ({
+    type: 'login/LOGOUT_SUCCESS',
+})
+
+export const logoutFailure = (error: string): LogoutFailureActionType => ({
+    type: 'login/LOGOUT_FAILURE',
+    error,
 })

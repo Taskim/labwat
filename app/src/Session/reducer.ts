@@ -10,7 +10,7 @@ function reducer(state = initialState, action: ActionTypes) {
                 ...state,
                 ...action.user,
             }
-        case 'login/LOGOUT_CURRENT_USER':
+        case 'login/LOGOUT_SUCCESS':
             return {
                 ...state,
                 ...initialState,

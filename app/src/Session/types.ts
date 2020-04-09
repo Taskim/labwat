@@ -49,8 +49,17 @@ export type RegisterFailureActionType = {
     error: string
 }
 
-export type LogoutCurrentUser = {
-    type: 'login/LOGOUT_CURRENT_USER'
+export type LogoutRequestActionType = {
+    type: 'login/LOGOUT_REQUEST'
+}
+
+export type LogoutSuccessActionType = {
+    type: 'login/LOGOUT_SUCCESS'
+}
+
+export type LogoutFailureActionType = {
+    type: 'login/LOGOUT_FAILURE'
+    error: string
 }
 
 export type ActionTypes =
@@ -60,4 +69,6 @@ export type ActionTypes =
     | RegisterRequestActionType
     | RegisterSuccessActionType
     | RegisterFailureActionType
-    | LogoutCurrentUser
+    | LogoutRequestActionType
+    | LogoutSuccessActionType
+    | LoginFailureActionType

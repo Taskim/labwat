@@ -2,12 +2,14 @@ import { takeLatest, call, put } from 'redux-saga/effects'
 
 import { RegisterRequestActionType, LoginRequestActionType } from './types'
 
-import { register, login } from './api'
+import { register, login, logout } from './api'
 import {
     registerSucess,
     registerFailure,
-    loginSucess,
+    loginSuccess,
     loginFailure,
+    logoutSuccess,
+    logoutFailure,
 } from './actions'
 
 export function* registerFlow(action: RegisterRequestActionType) {
@@ -24,13 +26,23 @@ export function* loginFlow(action: LoginRequestActionType) {
     const { fields } = action
     try {
         const response = yield call(login, fields)
-        yield put(loginSucess(response))
+        yield put(loginSuccess(response))
     } catch (e) {
         yield put(loginFailure(e))
+    }
+}
+
+export function* logoutFlow() {
+    try {
+        yield call(logout)
+        yield put(logoutSuccess())
+    } catch (e) {
+        yield put(logoutFailure(e))
     }
 }
 
 export function* sessionWatcher() {
     yield takeLatest('login/REGISTER_REQUEST', registerFlow)
     yield takeLatest('login/LOGIN_REQUEST', loginFlow)
+    yield takeLatest('login/LOGOUT_REQUEST', logoutFlow)
 }

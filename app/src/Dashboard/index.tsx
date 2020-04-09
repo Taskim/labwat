@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { logoutCurrentUser } from '../Session/actions'
+import { logoutRequest } from '../Session/actions'
 
 const mapStateToProps = ({ session }: any) => ({
     session,
@@ -13,6 +13,4 @@ const Dashboard = ({ logout, session }: any) => (
         <button onClick={logout}>Logout</button>
     </>
 )
-export default connect(mapStateToProps, { logout: logoutCurrentUser })(
-    Dashboard
-)
+export default connect(mapStateToProps, { logout: logoutRequest })(Dashboard)
