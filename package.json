@@ -1,28 +1,47 @@
 {
-    "name": "labwat",
+    "name": "sonus-backend",
     "version": "1.0.0",
     "description": "",
-    "main": "server.js",
+    "main": "./backend/src/server.ts",
+    "module": "./backend/src/server.ts",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js",
-        "heroku-postbuild": "cd client && npm install && npm run build"
+        "start": "ts-node ./backend/src/server.ts",
+        "start:dev": "nodemon",
+        "heroku-postbuild": "cd ./app && npm install && npm run build"
     },
-    "keywords": [],
-    "author": "",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Taskim/labwat.git"
+    },
+    "keywords": [
+        "sound",
+        "board"
+    ],
+    "author": "Taskim",
     "license": "ISC",
-    "dependencies": {
-        "bcryptjs": "^2.4.3",
-        "body-parser": "^1.18.3",
-        "cors": "^2.8.5",
-        "dotenv": "^8.2.0",
-        "express": "^4.16.4",
-        "jsonwebtoken": "^8.5.1",
-        "lodash": "^4.17.15",
-        "mongoose": "^5.4.13",
-        "prop-types": "^15.7.2"
+    "bugs": {
+        "url": "https://github.com/Taskim/labwat/issues"
     },
-    "engines": {
-        "node": "11.3.0"
+    "homepage": "https://labwat.herokuapp.com/",
+    "dependencies": {
+        "@types/body-parser": "^1.19.0",
+        "@types/cors": "^2.8.6",
+        "@types/express": "^4.17.4",
+        "@types/express-session": "^1.17.0",
+        "@types/mongoose": "^5.7.8",
+        "@types/node": "^13.11.0",
+        "bcryptjs": "^2.4.3",
+        "connect-mongo": "^3.2.0",
+        "crypto-js": "^4.0.0",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-session": "^1.17.0",
+        "joi": "^14.3.1",
+        "mongoose": "^5.9.7",
+        "ts-node": "^8.8.2",
+        "typescript": "^3.8.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.2"
     }
 }
