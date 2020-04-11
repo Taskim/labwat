@@ -30,6 +30,7 @@ soundRouter.get('/all', async (req, res) => {
 
 soundRouter.post('/upload', upload.any(), async (req, res) => {
     const { user } = req.session
+
     if (!user) {
         return res.status(401).send('Unauthorized')
     }
@@ -49,6 +50,7 @@ soundRouter.post('/upload', upload.any(), async (req, res) => {
                         name,
                         soundLink: setDropboxDownloadParamater(response.url),
                         svgPaths: `test.jpg`,
+                        author: user.userId,
                     }).save()
                     res.send(sound)
                 })
