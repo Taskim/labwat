@@ -3,15 +3,9 @@ import * as mongoose from 'mongoose'
 import * as session from 'express-session'
 import * as connectStore from 'connect-mongo'
 import * as path from 'path'
-import * as dotenv from 'dotenv'
 
-import { userRoutes, sessionRoutes } from './routes/index'
+import { userRoutes, sessionRoutes, soundRoutes } from './routes/index'
 import init from './util/init'
-
-if (process.env.NODE_ENV !== 'production') {
-    dotenv.config()
-}
-
 ;(async () => {
     try {
         await mongoose
@@ -56,6 +50,7 @@ if (process.env.NODE_ENV !== 'production') {
         app.use('/api', apiRouter)
         apiRouter.use('/users', userRoutes)
         apiRouter.use('/session', sessionRoutes)
+        apiRouter.use('/sound', soundRoutes)
 
         const dir = path.join(__dirname, '../../app/build')
 
