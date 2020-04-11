@@ -7,6 +7,7 @@ import { allSoundSelector } from './selectors'
 import { State } from '../types'
 import { DashboardState } from './types'
 import { SessionState } from '../Session/types'
+import UploadForm from './components/UploadForm'
 
 const mapStateToProps = (state: State) => ({
     session: state.session,
@@ -51,6 +52,7 @@ const Dashboard = ({ getAllSounds, sounds, logout, session }: Props) => {
                     </React.Fragment>
                 ))}
             </div>
+            <UploadForm />
         </>
     )
 }

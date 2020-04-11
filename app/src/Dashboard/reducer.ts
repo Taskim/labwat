@@ -7,7 +7,18 @@ function reducer(state = initialState, action: ActionTypes) {
         case 'dashboard/GET_ALL_SOUNDS_SUCCESS':
             return {
                 ...state,
-                ...action.sounds,
+                ...action.sounds.reduce(
+                    (acc, current) => ({ ...acc, [current._id]: current }),
+                    {}
+                ),
+            }
+        case 'dashboard/UPLOAD_SOUND_SUCCESS':
+            return {
+                ...state,
+                [action.sound._id]: action.sound,
+            }
+            return {
+                ...state,
             }
         default:
             return state

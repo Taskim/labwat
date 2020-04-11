@@ -37,7 +37,7 @@ soundRouter.post('/upload', upload.any(), async (req, res) => {
     const { name } = req.body
     const file = req.files[0]
 
-    if (!file || file.mimetype !== 'audio/mpeg') {
+    if (!file || !['audio/mp3', 'audio/mpeg'].includes(file.mimetype)) {
         return res.status(400).send('wrong file type')
     }
     const filename = replaceFilenameByUuid(file.originalname)
