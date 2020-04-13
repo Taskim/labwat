@@ -40,6 +40,9 @@ soundRouter.post('/upload', upload.any(), async (req, res) => {
     if (!file || !['audio/mp3', 'audio/mpeg'].includes(file.mimetype)) {
         return res.status(400).send('wrong file type')
     }
+    if (file.size > 500000) {
+        return res.status(400).send('File is too large')
+    }
     const filename = replaceFilenameByUuid(file.originalname)
 
     dbx.filesUpload({ path: '/' + filename, contents: file.buffer })
