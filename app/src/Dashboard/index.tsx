@@ -7,7 +7,8 @@ import { allSoundSelector } from './selectors'
 import { State } from '../types'
 import { DashboardState } from './types'
 import { SessionState } from '../Session/types'
-import UploadForm from './components/UploadForm'
+// import UploadForm from './components/UploadForm'
+import Image from '../Image'
 
 const mapStateToProps = (state: State) => ({
     session: state.session,
@@ -36,7 +37,7 @@ const Dashboard = ({ getAllSounds, sounds, logout, session }: Props) => {
     return (
         <>
             <h1>Hi {session.username}</h1>
-            <p>You are now logged in!</p>
+            {/*<p>You are now logged in!</p>
             <button onClick={logout}>Logout</button>
             <div>
                 {Object.values(sounds).map((sound) => (
@@ -52,7 +53,8 @@ const Dashboard = ({ getAllSounds, sounds, logout, session }: Props) => {
                     </React.Fragment>
                 ))}
             </div>
-            <UploadForm />
+                <UploadForm />*/}
+            <Image />
         </>
     )
 }

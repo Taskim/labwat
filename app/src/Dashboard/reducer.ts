@@ -17,9 +17,6 @@ function reducer(state = initialState, action: ActionTypes) {
                 ...state,
                 [action.sound._id]: action.sound,
             }
-            return {
-                ...state,
-            }
         default:
             return state
     }
