@@ -9,3 +9,28 @@
     left: 0;
     right: 0;
 }
+
+.dropzone {
+    border: 2px dashed #fe6b8b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+    color: #fff;
+    width: 300px;
+    padding: 16px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.info {
+    font-size: 12px;
+}
+
+.checkbox:not(:checked) {
+    color: #fff;
+}
+
+.button {
+    margin-top: 8px !important;
+}

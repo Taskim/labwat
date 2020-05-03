@@ -1,8 +1,13 @@
 .container {
+    max-width: 720px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #00000030 !important;
+    color: white !important;
+    padding: 16px;
 }
 
 .form {
@@ -12,4 +17,47 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.stepper {
+    background-color: transparent !important;
+    padding: 0 !important;
+}
+
+.root {
+    color: #eaeaf0;
+    display: flex;
+    height: 22px;
+    align-items: center;
+}
+.active {
+    color: '#fe6b8b';
+}
+.circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #fe6b8b;
+}
+.completed {
+    color: #fe6b8b;
+    z-index: 1;
+    font-size: 18px;
+}
+
+.label {
+    color: #fff !important;
+}
+
+.dropzone {
+    border: 2px dashed #fe6b8b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+    color: #fff;
+    width: 300px;
+    padding: 16px;
+    cursor: pointer;
+    font-size: 18px;
 }

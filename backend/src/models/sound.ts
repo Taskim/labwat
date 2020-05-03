@@ -12,7 +12,7 @@ const Sound = mongoose.model(
                 type: String,
                 required: true,
             },
-            svgPaths: {
+            svg: {
                 type: String,
                 required: true,
             },

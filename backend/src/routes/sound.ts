@@ -34,7 +34,7 @@ soundRouter.post('/upload', upload.any(), async (req, res) => {
     if (!user) {
         return res.status(401).send('Unauthorized')
     }
-    const { name } = req.body
+    const { name, svg } = req.body
     const file = req.files[0]
 
     if (!file || !['audio/mp3', 'audio/mpeg'].includes(file.mimetype)) {
@@ -52,14 +52,14 @@ soundRouter.post('/upload', upload.any(), async (req, res) => {
                     const sound = await new Sound({
                         name,
                         soundLink: setDropboxDownloadParamater(response.url),
-                        svgPaths: `test.jpg`,
+                        svg,
                         author: user.userId,
                     }).save()
                     res.send(sound)
                 })
-                .catch((err) => res.status(400).send(err.error))
+                .catch(err => res.status(400).send(err.error))
         })
-        .catch((err) => res.status(400).send(err.error))
+        .catch(err => res.status(400).send(err.error))
 })
 
 export default soundRouter

@@ -6,11 +6,11 @@ export const getAllSounds = () => {
     return axios.get('api/sound/all').then((response) => response.data)
 }
 
-export const upload = ({ name, file, svgPaths }: UploadFields) => {
+export const upload = ({ name, file, svg }: UploadFields) => {
     const formData = new FormData()
     formData.append('name', name)
     formData.append('file', file)
-    formData.append('svgPaths', 'todo')
+    formData.append('svg', svg)
     return axios({
         method: 'post',
         url: 'api/sound/upload',

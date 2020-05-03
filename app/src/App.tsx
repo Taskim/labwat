@@ -6,6 +6,7 @@ import Register from './Session/components/Register'
 import Login from './Session/components/Login'
 import Dashboard from './Dashboard'
 import { AuthRoute, ProtectedRoute } from './utils/routes'
+import Background from './Background'
 
 class App extends Component {
     render() {
@@ -28,6 +29,7 @@ class App extends Component {
                     <ProtectedRoute path="/dashboard" component={Dashboard} />
                     <Route path="/"></Route>
                 </Switch>
+                <Background />
                 {/*<Dashboard />*/}
             </div>
         )

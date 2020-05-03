@@ -9,6 +9,6 @@ export default class State {
         this.target = target
         this.canvas = canvas
         this.distance =
-            distance == Infinity ? target.distance(canvas) : distance
+            distance === Infinity ? target.distance(canvas) : distance
     }
 }

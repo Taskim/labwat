@@ -1,6 +1,6 @@
 import * as util from './util'
 import State from './state'
-import { Config, Shape, ShapeInstance } from '../types'
+import { Config, ShapeInstance } from '../types'
 
 /* Step: a, ShapeInstance, color and alpha */
 export default class Step {

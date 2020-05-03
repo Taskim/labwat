@@ -64,7 +64,8 @@ export default class Canvas {
         cp.appendChild(rect)
 
         rect = svgRect(cfg.width, cfg.height)
-        rect.setAttribute('fill', cfg.fill)
+        // fill background (cfg.fill)
+        rect.setAttribute('fill', '#292929')
         node.appendChild(rect)
 
         return node
@@ -105,9 +106,7 @@ export default class Canvas {
             }
             img.onerror = (e) => {
                 console.error(e)
-                alert(
-                    'The image URL cannot be loaded. Does the server support CORS?'
-                )
+                alert('The image URL cannot be loaded')
             }
         })
     }

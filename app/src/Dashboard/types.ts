@@ -4,8 +4,7 @@ export type Sound = {
     _id: SoundId
     name: string
     soundLink: string
-    // todo
-    svgPaths: any
+    svg: string
     createdAt: string
 }
 
@@ -16,8 +15,7 @@ export type DashboardState = {
 export type UploadFields = {
     name: string
     file: File
-    // todo
-    svgPaths?: string
+    svg: string
 }
 
 export type GetAllSoundsRequestAction = {

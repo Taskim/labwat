@@ -52,7 +52,6 @@ export default class Optimizer {
         if (this._steps < this.cfg.steps) {
             setTimeout(() => this._addShape(), 10)
         } else {
-            let time = Date.now() - (this._ts || 0)
             this.onFinish()
             // console.log('target distance %s', this.state.distance)
             // console.log(
