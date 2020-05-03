@@ -8,6 +8,7 @@ import { State } from '../types'
 import { DashboardState } from './types'
 import { SessionState } from '../Session/types'
 import UploadForm from './components/UploadForm'
+import { setBackground } from '../Background/actions'
 
 const mapStateToProps = (state: State) => ({
     session: state.session,
@@ -16,12 +17,19 @@ const mapStateToProps = (state: State) => ({
 
 type Props = {
     getAllSounds: typeof getAllSoundsRequest
+    setBackground: typeof setBackground
     sounds: DashboardState
     logout: typeof logoutRequest
     session: SessionState
 }
 
-const Dashboard = ({ getAllSounds, sounds, logout, session }: Props) => {
+const Dashboard = ({
+    getAllSounds,
+    sounds,
+    logout,
+    session,
+    setBackground,
+}: Props) => {
     useEffect(() => {
         getAllSounds()
     }, [])
@@ -30,6 +38,7 @@ const Dashboard = ({ getAllSounds, sounds, logout, session }: Props) => {
         const nextAudio = document.querySelector<HTMLAudioElement>(
             `audio[data-key="${id}"]`
         )!
+        setBackground(sounds[id].svg)
         nextAudio.play()
     }
 
@@ -59,4 +68,5 @@ const Dashboard = ({ getAllSounds, sounds, logout, session }: Props) => {
 export default connect(mapStateToProps, {
     logout: logoutRequest,
     getAllSounds: getAllSoundsRequest,
+    setBackground,
 })(Dashboard)

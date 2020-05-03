@@ -11,9 +11,7 @@ type Props = {
 }
 
 const Background = ({ svg }: Props) => {
-    if (!svg) return <div />
-
-    const paths = getPathsFromSVG(svg)
+    const paths = (svg && getPathsFromSVG(svg)) || []
 
     return (
         <div className={s.background}>
