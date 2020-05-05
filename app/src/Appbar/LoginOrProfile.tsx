@@ -63,18 +63,17 @@ function LoginOrProfile({
         )
     }
 
-    if (location.pathname === '/register') {
+    if (location.pathname === '/login') {
         return (
-            <Link to="/login">
-                <Button color="inherit">Login</Button>
+            <Link to="register" className={s.link}>
+                <Button classes={{ text: s.button }}>Register</Button>
             </Link>
         )
     }
 
-    // location.pathname === '/login'
     return (
-        <Link to="register">
-            <Button color="inherit">Register</Button>
+        <Link to="/login" className={s.link}>
+            <Button classes={{ text: s.button }}>Login</Button>
         </Link>
     )
 }
