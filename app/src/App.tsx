@@ -7,30 +7,27 @@ import Login from './Session/components/Login'
 import Dashboard from './Dashboard'
 import { AuthRoute, ProtectedRoute } from './utils/routes'
 import Background from './Background'
+import Appbar from './Appbar'
+import UploadForm from './Dashboard/components/UploadForm'
 
 class App extends Component {
     render() {
         return (
             <div className="App">
-                <Link to="/login">Login</Link>
+                <Appbar />
+                <Background />
+                {/*<Link to="/login">Login</Link>
                 <br />
                 <Link to="/register">Register</Link>
                 <br />
-                <Link to="/dashboard">Dashboard</Link>
+        <Link to="/">Dashboard</Link>*/}
+                <Link to="/create">Create</Link>
                 <Switch>
-                    {/*
-                    //@ts-ignore */}
                     <AuthRoute path="/login" component={Login} />
-                    {/* 
-                    //@ts-ignore */}
                     <AuthRoute path="/register" component={Register} />
-                    {/* 
-                    //@ts-ignore */}
-                    <ProtectedRoute path="/dashboard" component={Dashboard} />
-                    <Route path="/"></Route>
+                    <ProtectedRoute path="/create" component={UploadForm} />
+                    <Route path="/" component={Dashboard} />
                 </Switch>
-                <Background />
-                {/*<Dashboard />*/}
             </div>
         )
     }

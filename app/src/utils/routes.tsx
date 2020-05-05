@@ -30,11 +30,7 @@ class Auth extends React.Component<Props> {
             <Route
                 path={path}
                 render={(props) =>
-                    loggedIn ? (
-                        <Redirect to="/dashboard" />
-                    ) : (
-                        <Component {...props} />
-                    )
+                    loggedIn ? <Redirect to="/" /> : <Component {...props} />
                 }
             />
         )

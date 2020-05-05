@@ -1,0 +1,17 @@
+.container {
+    background-color: #00000030 !important;
+    transition: all 0.2s ease-in !important;
+}
+
+.title {
+    flex-grow: 1;
+}
+
+.container:hover {
+    background-color: #fe6b8b !important;
+}
+
+.menuPopover {
+    background-color: #fe6b8b !important;
+    color: #fff !important;
+}
