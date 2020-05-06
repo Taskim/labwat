@@ -8,6 +8,13 @@
     background-color: #00000030 !important;
     color: white !important;
     padding: 16px;
+    position: relative;
+}
+
+.backButton {
+    position: absolute !important;
+    left: 0;
+    top: 0;
 }
 
 .form {

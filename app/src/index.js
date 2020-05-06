@@ -19,8 +19,8 @@ const theme = createMuiTheme({
             contrastText: '#fff',
         },
         secondary: {
-            light: '#0066ff',
-            main: '#0044ff',
+            // light: '#0066ff',
+            main: '#fff',
             // dark: will be calculated from palette.secondary.main,
             // contrastText: '#ffcc00',
         },
@@ -34,7 +34,7 @@ const theme = createMuiTheme({
     },
 })
 
-const renderApp = preloadedState => {
+const renderApp = (preloadedState) => {
     const store = configureStore(preloadedState)
     ReactDOM.render(
         <Provider store={store}>

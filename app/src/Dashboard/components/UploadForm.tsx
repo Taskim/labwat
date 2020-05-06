@@ -1,9 +1,11 @@
 import React, { useState, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, Paper } from '@material-ui/core'
+import { Button, Paper, IconButton } from '@material-ui/core'
 import * as yup from 'yup'
 import { connect } from 'react-redux'
 import { useDropzone } from 'react-dropzone'
+import { Link } from 'react-router-dom'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 import s from './style.module.css'
 import { uploadSoundRequest } from '../actions'
@@ -110,6 +112,11 @@ const Register = ({ upload }: Props) => {
 
     return (
         <Paper classes={{ root: s.container }}>
+            <Link to="/">
+                <IconButton className={s.backButton} color="secondary">
+                    <ArrowBackIcon />
+                </IconButton>
+            </Link>
             <h3>.Create Sound</h3>
             <form className={s.form}>
                 <Stepper activeStep={activeStep} />
