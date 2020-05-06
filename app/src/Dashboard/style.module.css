@@ -1,0 +1,55 @@
+.soundContainer {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    max-height: 100%;
+    position: fixed;
+    overflow: scroll;
+    padding-bottom: 100px;
+}
+
+.soundButton {
+    flex: 1 0 27%;
+    padding: 16px;
+    list-style: none;
+    cursor: pointer;
+    background: #00000030;
+    color: #ffffffbb;
+    font-family: Kanit, sans-serif;
+    font-weight: 100;
+    font-size: 16px;
+    letter-spacing: 1px;
+    z-index: 1;
+    height: 96px;
+    margin: 16px;
+    text-transform: uppercase;
+    border: 0;
+    transition: all 0.2s;
+    border-radius: 4px;
+    line-height: 24px;
+    outline: none;
+}
+
+.soundButton.active {
+    background: rgba(60, 60, 60, 0.8);
+}
+
+.soundButton:hover {
+    background: #00000050;
+    color: #fff;
+}
+
+@media screen and (max-width: 720px) {
+    .soundContainer {
+        display: inherit;
+    }
+    .soundButton {
+        flex: 1 1 120px;
+        font-size: 16px;
+        letter-spacing: 5px;
+        height: 120px;
+    }
+}

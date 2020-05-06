@@ -5,11 +5,10 @@ import { getAllSoundsRequest } from './actions'
 import { allSoundSelector } from './selectors'
 import { State } from '../types'
 import { DashboardState } from './types'
-import { SessionState } from '../Session/types'
 import { setBackground } from '../Background/actions'
+import s from './style.module.css'
 
 const mapStateToProps = (state: State) => ({
-    session: state.session,
     sounds: allSoundSelector(state),
 })
 
@@ -17,10 +16,9 @@ type Props = {
     getAllSounds: typeof getAllSoundsRequest
     setBackground: typeof setBackground
     sounds: DashboardState
-    session: SessionState
 }
 
-const Dashboard = ({ getAllSounds, sounds, session, setBackground }: Props) => {
+const Dashboard = ({ getAllSounds, sounds, setBackground }: Props) => {
     useEffect(() => {
         getAllSounds()
     }, [])
@@ -35,7 +33,7 @@ const Dashboard = ({ getAllSounds, sounds, session, setBackground }: Props) => {
 
     return (
         <>
-            <div>
+            <div className={s.soundContainer}>
                 {Object.values(sounds).map((sound) => (
                     <React.Fragment key={sound._id}>
                         <audio
@@ -43,7 +41,10 @@ const Dashboard = ({ getAllSounds, sounds, session, setBackground }: Props) => {
                             data-key={sound._id}
                             src={sound.soundLink}
                         />
-                        <button onClick={() => play(sound._id)}>
+                        <button
+                            className={s.soundButton}
+                            onClick={() => play(sound._id)}
+                        >
                             {sound.name}
                         </button>
                     </React.Fragment>
