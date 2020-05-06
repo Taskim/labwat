@@ -1,13 +1,13 @@
 import React, { useState, ChangeEvent } from 'react'
 import { connect } from 'react-redux'
 import { useDropzone } from 'react-dropzone'
-import { Button, Checkbox, FormControlLabel } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 
 import { Config, ShapeValue } from './types'
 
 import Canvas from './utils/canvas'
 import Optimizer from './utils/optimizer'
-import { Triangle, Rectangle, Ellipse } from './utils/shape'
+import { Triangle } from './utils/shape'
 import { setBackground } from '../Background/actions'
 import s from './style.module.css'
 
@@ -77,11 +77,6 @@ const Image = ({ onFinish, setBackground }: Props) => {
     }
 
     function getConfig(): Config {
-        const shapeMap = {
-            triangle: Triangle,
-            rectangle: Rectangle,
-            ellipse: Ellipse,
-        }
         let cfg = {
             computeSize: 512,
             viewSize: 512,
@@ -91,15 +86,11 @@ const Image = ({ onFinish, setBackground }: Props) => {
             mutations: 30,
             mutateAlpha: true,
             fill: 'auto',
-            shapeTypes: [],
+            shapeTypes: [Triangle],
             width: 512,
             height: 512,
             scale: 1,
         }
-
-        shapes.forEach((input) => {
-            ;(cfg as any).shapeTypes.push(shapeMap[input])
-        })
 
         return cfg
     }
@@ -127,46 +118,6 @@ const Image = ({ onFinish, setBackground }: Props) => {
                 ) : (
                     <p>Pick an image</p>
                 )}
-            </div>
-            <div>
-                <p>Use these shape types:</p>
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            className={s.checkbox}
-                            onChange={handleCheck}
-                            name="checkedB"
-                            color="primary"
-                            defaultChecked
-                            value="triangle"
-                        />
-                    }
-                    label="Triangles"
-                />
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            className={s.checkbox}
-                            onChange={handleCheck}
-                            name="checkedB"
-                            color="primary"
-                            value="rectangle"
-                        />
-                    }
-                    label="Rectangles"
-                />
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            className={s.checkbox}
-                            onChange={handleCheck}
-                            name="checkedB"
-                            color="primary"
-                            value="ellipse"
-                        />
-                    }
-                    label="Ellipses"
-                />
             </div>
             <p className={s.info}>
                 This is a CPU-intensive process. It might take a while.
