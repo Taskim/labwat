@@ -136,7 +136,6 @@ const UploadSchema = yup.object().shape({
         .mixed()
         .required('A file is required')
         .test('fileSize', 'File too large', (value) => {
-            console.log('value', value)
             return value && value.size <= 500000000
         })
         .test(

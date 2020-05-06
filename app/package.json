@@ -16,6 +16,7 @@
         "@types/yup": "^0.26.34",
         "axios": "^0.19.2",
         "classnames": "^2.2.6",
+        "connected-react-router": "^6.8.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-dropzone": "^11.0.1",

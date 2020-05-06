@@ -131,7 +131,6 @@ const Image = ({ onFinish, setBackground }: Props) => {
             >
                 Transform
             </Button>
-            <h3>{progression}</h3>
         </>
     )
 }

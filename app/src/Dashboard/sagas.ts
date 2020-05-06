@@ -1,4 +1,5 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
+import { push } from 'connected-react-router'
 
 import { getAllSounds, upload } from './api'
 import {
@@ -20,10 +21,14 @@ export function* getAllSoundsFlow() {
 
 export function* uploadSoundFlow(action: UploadSoundRequestAction) {
     try {
+        console.log('upload start')
         const { fields } = action
         const response = yield call(upload, fields)
         yield put(uploadSoundSuccess(response))
+        yield put(push('/'))
+        console.log('upload finish')
     } catch (e) {
+        console.log('upload error')
         yield put(uploadSoundFailure(e))
     }
 }

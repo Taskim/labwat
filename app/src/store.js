@@ -1,16 +1,23 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { createBrowserHistory } from 'history'
+import { routerMiddleware } from 'connected-react-router'
+
 import sagas from './sagas'
-import reducers from './reducers'
+import createRootReducer from './reducers'
 
 export const sagaMiddleware = createSagaMiddleware()
 
+export const history = createBrowserHistory()
+
 export default (preloadedState) => {
     const store = createStore(
-        reducers,
+        createRootReducer(history),
         preloadedState,
-        composeWithDevTools(applyMiddleware(sagaMiddleware))
+        composeWithDevTools(
+            applyMiddleware(routerMiddleware(history), sagaMiddleware)
+        )
     )
     sagaMiddleware.run(sagas)
     return store

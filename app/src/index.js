@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import { ConnectedRouter } from 'connected-react-router'
 
 import './index.css'
 import App from './App.tsx'
 import * as serviceWorker from './serviceWorker'
-import configureStore from './store'
+import configureStore, { history } from './store'
 import { checkLoggedIn } from './utils/session'
 
 const theme = createMuiTheme({
@@ -38,11 +38,11 @@ const renderApp = (preloadedState) => {
     const store = configureStore(preloadedState)
     ReactDOM.render(
         <Provider store={store}>
-            <BrowserRouter>
+            <ConnectedRouter history={history}>
                 <ThemeProvider theme={theme}>
                     <App />
                 </ThemeProvider>
-            </BrowserRouter>
+            </ConnectedRouter>
         </Provider>,
         document.getElementById('root')
     )
