@@ -4,7 +4,7 @@ import { Button, Paper, IconButton } from '@material-ui/core'
 import * as yup from 'yup'
 import { connect } from 'react-redux'
 import { useDropzone } from 'react-dropzone'
-import { Link } from 'react-router-dom'
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 
 import s from './style.module.css'
@@ -13,13 +13,13 @@ import Image from '../../Image'
 import Stepper from './Stepper'
 import Textfield from '../../common/TextField'
 
-type Props = {
+interface Props extends RouteComponentProps<any> {
     upload: typeof uploadSoundRequest
 }
 
 type Fields = { name: string; file: File }
 
-const Register = ({ upload }: Props) => {
+const Register = ({ history, upload }: Props) => {
     const { register, handleSubmit, errors, getValues, setValue } = useForm<
         Fields
     >({
@@ -112,11 +112,13 @@ const Register = ({ upload }: Props) => {
 
     return (
         <Paper classes={{ root: s.container }}>
-            <Link to="/">
-                <IconButton className={s.backButton} color="secondary">
-                    <ArrowBackIcon />
-                </IconButton>
-            </Link>
+            <IconButton
+                onClick={() => history.goBack()}
+                className={s.backButton}
+                color="secondary"
+            >
+                <ArrowBackIcon />
+            </IconButton>
             <h3>.Create Sound</h3>
             <form className={s.form}>
                 <Stepper activeStep={activeStep} />
@@ -144,4 +146,6 @@ const UploadSchema = yup.object().shape({
         ),
 })
 
-export default connect(null, { upload: uploadSoundRequest })(Register)
+export default withRouter(
+    connect(null, { upload: uploadSoundRequest })(Register)
+)
