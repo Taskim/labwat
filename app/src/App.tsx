@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch, Link } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import './App.css'
 import Register from './Session/components/Register'
@@ -21,7 +21,6 @@ class App extends Component {
                 <Link to="/register">Register</Link>
                 <br />
         <Link to="/">Dashboard</Link>*/}
-                <Link to="/create">Create</Link>
                 <Switch>
                     <AuthRoute path="/login" component={Login} />
                     <AuthRoute path="/register" component={Register} />

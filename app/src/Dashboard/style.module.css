@@ -11,9 +11,14 @@
     padding-bottom: 100px;
 }
 
+.fab {
+    margin-left: 16px !important;
+    background: #00000030 !important;
+    color: white !important;
+}
+
 .soundButton {
     flex: 1 0 27%;
-    padding: 16px;
     list-style: none;
     cursor: pointer;
     background: #00000030;
@@ -44,7 +49,7 @@
 
 @media screen and (max-width: 720px) {
     .soundContainer {
-        display: inherit;
+        display: flex;
     }
     .soundButton {
         flex: 1 1 120px;

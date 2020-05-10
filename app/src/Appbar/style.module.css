@@ -1,6 +1,7 @@
 .container {
     background-color: #00000030 !important;
     transition: all 0.2s ease-in !important;
+    margin-bottom: 16px !important;
 }
 
 .title {

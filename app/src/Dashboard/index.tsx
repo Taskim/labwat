@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import { Fab } from '@material-ui/core'
+import AddIcon from '@material-ui/icons/Add'
+import { Link } from 'react-router-dom'
 
 import { getAllSoundsRequest } from './actions'
 import { allSoundSelector } from './selectors'
@@ -45,6 +48,16 @@ const Dashboard = ({ getAllSounds, sounds, setBackground }: Props) => {
 
     return (
         <>
+            <Fab
+                component={Link}
+                to="/create"
+                variant="extended"
+                aria-label="add"
+                classes={{ extended: s.fab }}
+            >
+                <AddIcon />
+                Add
+            </Fab>
             <div className={s.soundContainer}>
                 {Object.values(sounds).map((sound) => (
                     <React.Fragment key={sound._id}>
