@@ -1,8 +1,14 @@
 .container {
+    max-width: 720px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #00000030 !important;
+    color: white !important;
+    padding: 16px;
+    position: relative;
 }
 
 .form {
@@ -12,4 +18,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.button {
+    margin-top: 32px !important;
 }
