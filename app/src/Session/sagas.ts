@@ -28,7 +28,7 @@ export function* loginFlow(action: LoginRequestActionType) {
         const response = yield call(login, fields)
         yield put(loginSuccess(response))
     } catch (e) {
-        yield put(loginFailure(e))
+        yield put(loginFailure(e.message))
     }
 }
 

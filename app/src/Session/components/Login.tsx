@@ -3,12 +3,15 @@ import { useForm } from 'react-hook-form'
 import { Button, Paper } from '@material-ui/core'
 import * as yup from 'yup'
 import { connect } from 'react-redux'
+import Alert from '@material-ui/lab/Alert'
 
 import { LoginFields } from '../types'
 
 import s from './style.module.css'
 import { loginRequest } from '../actions'
 import TextField from '../../common/TextField'
+import { State } from '../../types'
+import { getLoginErrorMessage } from '../selectors'
 
 const SignupSchema = yup.object().shape({
     email: yup.string().email().required(),
@@ -17,9 +20,10 @@ const SignupSchema = yup.object().shape({
 
 type Props = {
     loginRequest: typeof loginRequest
+    apiError: string | null
 }
 
-const Login = ({ loginRequest }: Props) => {
+const Login = ({ loginRequest, apiError }: Props) => {
     const { register, handleSubmit, errors } = useForm<LoginFields>({
         validationSchema: SignupSchema,
     })
@@ -50,6 +54,7 @@ const Login = ({ loginRequest }: Props) => {
                     helperText={errors.password?.message}
                     fullWidth
                 />
+                {apiError && <Alert severity="error">{apiError}</Alert>}
                 <Button
                     variant="contained"
                     color="primary"
@@ -63,4 +68,8 @@ const Login = ({ loginRequest }: Props) => {
     )
 }
 
-export default connect(null, { loginRequest })(Login)
+const mapStateToProps = (state: State) => ({
+    apiError: getLoginErrorMessage(state),
+})
+
+export default connect(mapStateToProps, { loginRequest })(Login)

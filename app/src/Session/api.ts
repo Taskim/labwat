@@ -22,6 +22,9 @@ export const login = ({ email, password }: LoginFields) => {
             password,
         })
         .then((response) => response.data)
+        .catch((err) => {
+            throw new Error(err.response.data)
+        })
 }
 
 export const logout = () => axios.delete('api/session')

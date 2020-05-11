@@ -1,9 +1,9 @@
 import { SessionState, ActionTypes } from './types'
-
 const initialState: SessionState = {
     userId: null,
     username: null,
     registerError: null,
+    loginError: null,
 }
 
 function reducer(state = initialState, action: ActionTypes) {
@@ -13,6 +13,11 @@ function reducer(state = initialState, action: ActionTypes) {
             return {
                 ...state,
                 ...action.user,
+            }
+        case 'login/LOGIN_FAILURE':
+            return {
+                ...state,
+                loginError: action.error,
             }
         case 'login/REGISTER_FAILURE':
             return {

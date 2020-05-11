@@ -7,3 +7,6 @@ export const getUsername = (state: State): string | null =>
 
 export const getRegisterErrorMessage = (state: State): string | null =>
     state.session.registerError
+
+export const getLoginErrorMessage = (state: State): string | null =>
+    state.session.loginError
