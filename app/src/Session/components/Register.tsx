@@ -3,12 +3,15 @@ import { useForm } from 'react-hook-form'
 import { Button, Paper } from '@material-ui/core'
 import * as yup from 'yup'
 import { connect } from 'react-redux'
+import Alert from '@material-ui/lab/Alert'
 
 import { RegisterFields } from '../types'
 
 import s from './style.module.css'
 import { registerRequest } from '../actions'
 import TextField from '../../common/TextField'
+import { getRegisterErrorMessage } from '../selectors'
+import { State } from '../../types'
 
 const SignupSchema = yup.object().shape({
     username: yup.string().min(4).required(),
@@ -18,9 +21,10 @@ const SignupSchema = yup.object().shape({
 
 type Props = {
     registerRequest: typeof registerRequest
+    apiError: string | null
 }
 
-const Register = ({ registerRequest }: Props) => {
+const Register = ({ registerRequest, apiError }: Props) => {
     const { register, handleSubmit, errors } = useForm<RegisterFields>({
         validationSchema: SignupSchema,
     })
@@ -29,8 +33,8 @@ const Register = ({ registerRequest }: Props) => {
     }
 
     return (
-        <Paper classes={{ root: s.container }}>
-            <h2>Register</h2>
+        <Paper elevation={0} classes={{ root: s.container }}>
+            <h2 className={s.title}>Register</h2>
             <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
                 <TextField
                     name="username"
@@ -60,6 +64,7 @@ const Register = ({ registerRequest }: Props) => {
                     helperText={errors.password?.message}
                     fullWidth
                 />
+                {apiError && <Alert severity="error">{apiError}</Alert>}
                 <Button
                     variant="contained"
                     color="primary"
@@ -73,4 +78,8 @@ const Register = ({ registerRequest }: Props) => {
     )
 }
 
-export default connect(null, { registerRequest })(Register)
+const mapStateToProps = (state: State) => ({
+    apiError: getRegisterErrorMessage(state),
+})
+
+export default connect(mapStateToProps, { registerRequest })(Register)

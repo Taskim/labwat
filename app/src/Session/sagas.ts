@@ -18,7 +18,7 @@ export function* registerFlow(action: RegisterRequestActionType) {
         const response = yield call(register, fields)
         yield put(registerSucess(response))
     } catch (e) {
-        yield put(registerFailure(e))
+        yield put(registerFailure(e.message))
     }
 }
 

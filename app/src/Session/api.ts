@@ -10,6 +10,9 @@ export const register = ({ username, email, password }: RegisterFields) => {
             password,
         })
         .then((response) => response.data)
+        .catch((err) => {
+            throw new Error(err.response.data.message)
+        })
 }
 
 export const login = ({ email, password }: LoginFields) => {

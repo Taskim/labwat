@@ -17,6 +17,7 @@ export type User = {
 export type SessionState = {
     userId: string | null
     username: string | null
+    registerError: string | null
 }
 
 export type LoginRequestActionType = {

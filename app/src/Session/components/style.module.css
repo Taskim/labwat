@@ -20,6 +20,10 @@
     justify-content: center;
 }
 
+.title {
+    margin: 16px;
+}
+
 .button {
     margin-top: 32px !important;
 }

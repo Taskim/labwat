@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField'
 
 const Textfield = withStyles({
     root: {
-        marginBottom: 8,
+        marginBottom: 16,
         '& label': {
             color: 'white',
         },
