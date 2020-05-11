@@ -12,7 +12,7 @@ import TextField from '../../common/TextField'
 
 const SignupSchema = yup.object().shape({
     email: yup.string().email().required(),
-    password: yup.string().min(6).required(),
+    password: yup.string().min(8).required(),
 })
 
 type Props = {
