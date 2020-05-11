@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { TextField, Button } from '@material-ui/core'
+import { Button, Paper } from '@material-ui/core'
 import * as yup from 'yup'
 import { connect } from 'react-redux'
 
@@ -8,6 +8,7 @@ import { LoginFields } from '../types'
 
 import s from './style.module.css'
 import { loginRequest } from '../actions'
+import TextField from '../../common/TextField'
 
 const SignupSchema = yup.object().shape({
     email: yup.string().email().required(),
@@ -27,8 +28,8 @@ const Login = ({ loginRequest }: Props) => {
     }
 
     return (
-        <div className={s.container}>
-            <h1>Login</h1>
+        <Paper elevation={0} classes={{ root: s.container }}>
+            <h2 className={s.title}>Login</h2>
             <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
                 <TextField
                     name="email"
@@ -49,11 +50,16 @@ const Login = ({ loginRequest }: Props) => {
                     helperText={errors.password?.message}
                     fullWidth
                 />
-                <Button variant="contained" color="primary" type="submit">
+                <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
+                    classes={{ root: s.button }}
+                >
                     Login
                 </Button>
             </form>
-        </div>
+        </Paper>
     )
 }
 
