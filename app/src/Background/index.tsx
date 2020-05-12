@@ -5,13 +5,14 @@ import { Spring, animated } from 'react-spring/renderprops'
 import { State } from '../types'
 import { getPathsFromSVG } from './utils'
 import s from './style.module.css'
+import defaultBackground from './default'
 
 type Props = {
     svg: string | null
 }
 
 const Background = ({ svg }: Props) => {
-    const paths = (svg && getPathsFromSVG(svg)) || []
+    const paths = (svg && getPathsFromSVG(svg)) || defaultBackground
 
     return (
         <div className={s.background}>
