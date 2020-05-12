@@ -111,10 +111,10 @@ const Image = ({ onFinish, setBackground }: Props) => {
         <>
             <div {...getRootProps({ className: s.dropzone })}>
                 <input {...getInputProps()} />
-                {acceptedFiles[0]?.name ? (
-                    acceptedFiles[0]?.name
-                ) : isRunning ? (
+                {isRunning ? (
                     progression
+                ) : acceptedFiles[0]?.name ? (
+                    acceptedFiles[0]?.name
                 ) : isDragActive ? (
                     <p>Drop the file here ...</p>
                 ) : (
