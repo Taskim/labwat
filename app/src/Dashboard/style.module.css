@@ -13,7 +13,7 @@
 
 .fab {
     margin-left: 16px !important;
-    background: #00000030 !important;
+    background: #00000090 !important;
     color: white !important;
 }
 
@@ -21,7 +21,7 @@
     flex: 1 0 27%;
     list-style: none;
     cursor: pointer;
-    background: #00000030;
+    background: #00000090;
     color: #ffffffbb;
     font-family: Kanit, sans-serif;
     font-weight: 100;
